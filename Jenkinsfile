@@ -1,25 +1,25 @@
 pipeline {
-    agent any  // Use any available agent
+    agent any
 
     tools {
-        maven 'maven'  // Ensure this matches the name configured in Jenkins
+        maven 'maven'
     }
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/RahilMasood/DevOpsLab_Maven.git'
+                git branch: 'master', url: 'https://github.com/RahilMasood/BIT_1BI23CS164.git'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'  // Run Maven build
+                sh 'mvn clean package'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'  // Run unit tests
+                sh 'mvn test'
             }
         }
 
@@ -28,7 +28,6 @@ pipeline {
        
         stage('Run Application') {
             steps {
-                // Start the JAR application
                 sh 'java -jar target/MyMavenApp-1.0-SNAPSHOT.jar'
             }
         }
